@@ -47,7 +47,7 @@ describe("Get Statement Operation Tests", () => {
     expect(async () => {
       const user = await createUserUseCase.execute({
         name: "vinicyus",
-        email: "vinicyus@gmail.com",
+        email: "vinicyus22@gmail.com",
         password: "admin"
       });
 
@@ -68,14 +68,14 @@ describe("Get Statement Operation Tests", () => {
   it("Should not be able to get a statement when statement does not exists.", () => {
     expect(async () => {
       const user = await createUserUseCase.execute({
-        name: "vinicyus",
+        name: "vinicyus1",
         email: "vinicyus1@gmail.com",
         password: "admin"
       });
 
-      const a = await getStatementOperationUseCase.execute({
+      await getStatementOperationUseCase.execute({
         user_id: user.id as string,
-        statement_id: "aushdiasuhd",
+        statement_id: "auauauaua",
       });
     }).rejects.toBeInstanceOf(GetStatementOperationError.StatementNotFound);
   });
