@@ -18,6 +18,14 @@ describe("Show User Profile Controller Tests", () => {
   });
 
   it("Should be able to show profile", async () => {
+    await request(app)
+      .post('/api/v1/users')
+      .send({
+        name: "admin",
+        email: "admin@rentx.com.br",
+        password: "admin"
+      });
+
     const response = await request(app)
       .post('/api/v1/sessions')
       .send({
@@ -28,18 +36,12 @@ describe("Show User Profile Controller Tests", () => {
 
     const {token} = response.body;
 
-    console.log(token);
-
     const user = await request(app)
       .get('/api/v1/profile')
       .set({
         Authorization: `Bearer ${token}`
     });
 
-    console.log(user);
-
-    expect(user.body[0]).toHaveProperty('id');
+    expect(user.body).toHaveProperty('id');
   });
-
-
 });

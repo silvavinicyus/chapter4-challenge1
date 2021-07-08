@@ -43,8 +43,8 @@ describe("Get Statement Operation Tests", () => {
     expect(statementOperation).toHaveProperty('id');
   });
 
-  it("Should not be able to get a statement when user does not exists.", () => {
-    expect(async () => {
+  it("Should not be able to get a statement when user does not exists.", async () => {
+    await expect(async () => {
       const user = await createUserUseCase.execute({
         name: "vinicyus",
         email: "vinicyus22@gmail.com",
