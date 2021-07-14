@@ -8,15 +8,17 @@ export class BalanceMap {
       description,
       type,
       created_at,
-      updated_at
+      updated_at,
+      sender_id
     }) => (
       {
         id,
         amount: Number(amount),
         description,
+        sender_id,
         type,
         created_at,
-        updated_at
+        updated_at,
       }
     ));
 

@@ -11,7 +11,7 @@ import { AppError } from './shared/errors/AppError';
 
 import createConnection from './database';
 
-createConnection();
+createConnection().then(() => {console.log("Database Connected")});
 const app = express();
 
 app.use(cors());
