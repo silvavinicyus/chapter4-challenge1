@@ -1,4 +1,4 @@
-import { Statement } from "../entities/Statement";
+import { OperationType, Statement } from "../entities/Statement";
 
 export class BalanceMap {
   static toDTO({statement, balance}: { statement: Statement[], balance: number}) {
@@ -11,14 +11,23 @@ export class BalanceMap {
       updated_at,
       sender_id
     }) => (
-      {
+      console.log(type),
+      type === OperationType.TRANSFER ? {
         id,
         amount: Number(amount),
         description,
         sender_id,
         type,
         created_at,
-        updated_at,
+        updated_at
+      } :
+      {
+        id,
+        amount: Number(amount),
+        description,
+        type,
+        created_at,
+        updated_at
       }
     ));
 
